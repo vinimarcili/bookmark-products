@@ -1,5 +1,9 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "6318780a-06fa-49fe-bca4-35f0a4dded4d",
+    "defaultCollection": "@angular-eslint/schematics"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -20,7 +24,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/bookmark-products",
+            "outputPath": "dist/bookmark-products/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -102,6 +106,74 @@
               "src/styles.scss"
             ],
             "scripts": []
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/bookmark-products/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json",
+            "inlineStyleLanguage": "scss"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
+            },
+            "development": {
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "bookmark-products:build:development",
+              "serverTarget": "bookmark-products:server:development"
+            },
+            "production": {
+              "browserTarget": "bookmark-products:build:production",
+              "serverTarget": "bookmark-products:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "bookmark-products:build:production",
+              "serverTarget": "bookmark-products:server:production"
+            },
+            "development": {
+              "browserTarget": "bookmark-products:build:development",
+              "serverTarget": "bookmark-products:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
           }
         }
       }

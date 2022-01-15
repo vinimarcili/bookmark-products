@@ -6,5 +6,6 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./products.page.scss'],
 })
 export class ProductsPageComponent implements OnInit {
-  ngOnInit(): void {}
+  loading = true
+  async ngOnInit() {}
 }

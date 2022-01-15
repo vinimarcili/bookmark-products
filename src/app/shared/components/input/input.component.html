@@ -6,7 +6,7 @@
     disabled: disabled,
     readonly: readonly
   }"
-  (click)="readonly && !disabled ? clickLeftIcon.emit() : null"
+  (click)="!readonly && !disabled ? clickLeftIcon.emit() : null"
 ></span>
 <input
   [name]="nameAttr || timeStamp"
@@ -15,7 +15,7 @@
   [value]="value"
   [type]="type || 'text'"
   [ngModel]="value"
-  (ngModelChange)="value = $event; valueChange.emit(value)"
+  (ngModelChange)="change($event)"
   [disabled]="disabled"
   [readonly]="readonly"
   (keydown)="sharedKeyPress.emit($event)"

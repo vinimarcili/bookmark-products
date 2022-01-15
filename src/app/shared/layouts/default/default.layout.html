@@ -17,15 +17,19 @@
       </ul>
       <div class="wrapper-search">
         <input-component
-          leftIcon="<i class='fas fa-search'></i>"
+          leftIcon="{{ searchText?.length ? '<i class=\'fas fa-times cursor-pointer\'></i>' : '<i class=\'fas fa-search\'></i>'}}"
           rightIcon="<i class='fas fa-arrow-right cursor-pointer' title='Buscar'></i>"
           nameAttr="search-input"
           idAttr="search-input"
           [(value)]="searchText"
           placeholder="Buscar"
           [disabled]="!canSearch"
+          [readonly]="isServer"
           (sharedKeyPress)="onEnter($event)"
           (clickRightIcon)="component?.search(searchText)"
+          (clickLeftIcon)="clear()"
+          [hasTimeout]="true"
+          (sharedWhenChange)="component?.search(searchText)"
         ></input-component>
       </div>
     </nav>

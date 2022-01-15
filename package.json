@@ -12,7 +12,9 @@
     "build:ssr": "ng build && ng run bookmark-products:server",
     "prerender": "ng run bookmark-products:prerender",
     "lint:fix": "ng lint --fix",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "build:gh-pages": "ng build --configuration=production --base-href \"https://vinimarcili.github.io/bookmark-products/\"",
+    "deploy:gh-pages": "npx angular-cli-ghpages --dir=dist/bookmark-products/browser"
   },
   "private": true,
   "dependencies": {
@@ -49,6 +51,7 @@
     "@types/node": "^12.20.41",
     "@typescript-eslint/eslint-plugin": "5.3.0",
     "@typescript-eslint/parser": "5.3.0",
+    "angular-cli-ghpages": "^1.0.0",
     "eslint": "^8.2.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.4",

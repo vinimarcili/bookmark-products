@@ -16,7 +16,7 @@
     "build:gh-pages": "ng build --configuration=production --base-href \"https://vinimarcili.github.io/bookmark-products/\"",
     "deploy:gh-pages": "npx angular-cli-ghpages --dir=dist/bookmark-products/browser",
     "deploy:gh-pages:actions": "npx angular-cli-ghpages --dir=dist/bookmark-products/browser --repo=https://github.com/vinimarcili/bookmark-products.git --name=vinimarcili --email=vinipetter@gmail.com",
-    "start:heroku": "node dist/server",
+    "start:heroku": "node dist/bookmark-products/server/main.js",
     "postinstall": "npm run build:ssr"
   },
   "private": true,

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core'
-import localForage from 'src/app/shared/helpers/localforage.helper'
+import { isPlatformServer } from '@angular/common'
+import { Component, Inject, InjectionToken, OnInit, PLATFORM_ID } from '@angular/core'
 import { Product } from 'src/app/shared/interfaces/product.interface'
 import { MockyService } from 'src/app/shared/services/mocky.service'
 
@@ -19,13 +19,21 @@ export class ProductsPageComponent implements OnInit {
   originalRequest: Array<Product> = []
   products: Array<Product> = []
   list: Array<Product> = []
+  isServer = isPlatformServer(this.platformId)
+  localForage: any
 
-  constructor(private mockyService: MockyService) {}
+  constructor(private mockyService: MockyService, @Inject(PLATFORM_ID) public platformId: InjectionToken<Object>) {
+    if (!this.isServer) {
+      this.localForage = require('src/app/shared/helpers/localforage.helper')?.default
+    }
+  }
 
   async ngOnInit() {
     this.products = await this.getProducts()
     this.originalRequest = this.products
-    this.list = (await localForage.getItem('products')) || []
+    if (!this.isServer) {
+      this.list = (await this.localForage.getItem('products')) || []
+    }
     this.loading = false
   }
 
@@ -49,7 +57,7 @@ export class ProductsPageComponent implements OnInit {
     } else {
       this.list = this.list.filter((item) => item.id !== product.id)
     }
-    await localForage.setItem('products', this.list)
+    await this.localForage.setItem('products', this.list)
   }
 
   async getProducts() {

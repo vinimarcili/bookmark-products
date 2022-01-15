@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core'
-import localForage from 'src/app/shared/helpers/localforage.helper'
+import { isPlatformServer } from '@angular/common'
+import { Component, Inject, InjectionToken, OnInit, PLATFORM_ID } from '@angular/core'
 import { Product } from 'src/app/shared/interfaces/product.interface'
 
 @Component({
@@ -21,13 +21,21 @@ export class WishlistPageComponent implements OnInit {
   ]
   originalRequest: Array<Product> = []
   products: Array<Product> = []
+  isServer = isPlatformServer(this.platformId)
+  localForage: any
 
-  constructor() {}
+  constructor(@Inject(PLATFORM_ID) public platformId: InjectionToken<Object>) {
+    if (!this.isServer) {
+      this.localForage = require('src/app/shared/helpers/localforage.helper')?.default
+    }
+  }
 
   async ngOnInit() {
-    this.products = (await localForage.getItem('products')) || []
-    this.originalRequest = this.products
-    this.loading = false
+    if (!this.isServer) {
+      this.products = (await this.localForage.getItem('products')) || []
+      this.originalRequest = this.products
+      this.loading = false
+    }
   }
 
   search(text: string) {
@@ -42,6 +50,6 @@ export class WishlistPageComponent implements OnInit {
 
   async toggleItem({ product }: { active: boolean; product: Product }) {
     this.products = this.products.filter((item) => item.id !== product.id)
-    await localForage.setItem('products', this.products)
+    await this.localForage.setItem('products', this.products)
   }
 }

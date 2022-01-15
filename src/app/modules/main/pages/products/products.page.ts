@@ -1,7 +1,7 @@
 import { isPlatformServer } from '@angular/common'
 import { Component, Inject, InjectionToken, OnInit, PLATFORM_ID } from '@angular/core'
 import { Product } from 'src/app/shared/interfaces/product.interface'
-import { MockyService } from 'src/app/shared/services/mocky.service'
+import { MockyService } from 'src/app/shared/services/mocky/mocky.service'
 
 @Component({
   selector: 'products-page',
@@ -24,7 +24,7 @@ export class ProductsPageComponent implements OnInit {
 
   constructor(private mockyService: MockyService, @Inject(PLATFORM_ID) public platformId: InjectionToken<Object>) {
     if (!this.isServer) {
-      this.localForage = require('src/app/shared/helpers/localforage.helper')?.default
+      this.localForage = require('src/app/shared/helpers/localforage/localforage.helper')?.default
     }
   }
 

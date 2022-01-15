@@ -26,7 +26,7 @@ export class WishlistPageComponent implements OnInit {
 
   constructor(@Inject(PLATFORM_ID) public platformId: InjectionToken<Object>) {
     if (!this.isServer) {
-      this.localForage = require('src/app/shared/helpers/localforage.helper')?.default
+      this.localForage = require('src/app/shared/helpers/localforage/localforage.helper')?.default
     }
   }
 

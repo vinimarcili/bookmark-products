@@ -5,10 +5,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core'
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
 })
-export class InputSquidComponent {
+export class InputComponent {
   @Input() nameAttr?: string
   @Input() idAttr?: string
-  @Input() value?: any
+  @Input() value = ''
   @Input() type = 'text'
   @Input() placeholder?: string
   @Input() leftIcon = ''

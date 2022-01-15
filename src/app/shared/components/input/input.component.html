@@ -7,6 +7,7 @@
     readonly: readonly
   }"
   (click)="!readonly && !disabled ? clickLeftIcon.emit() : null"
+  data-testid="left-icon"
 ></span>
 <input
   [name]="nameAttr || timeStamp"
@@ -19,6 +20,7 @@
   [disabled]="disabled"
   [readonly]="readonly"
   (keydown)="sharedKeyPress.emit($event)"
+  data-testid="input"
 />
 <span
   class="icon right-icon"
@@ -29,4 +31,5 @@
     readonly: readonly
   }"
   (click)="!readonly && !disabled ? clickRightIcon.emit() : null"
+  data-testid="right-icon"
 ></span>

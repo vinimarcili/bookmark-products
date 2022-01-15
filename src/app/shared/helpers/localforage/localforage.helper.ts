@@ -1,5 +1,5 @@
 import * as localForage from 'localforage'
-import { environment } from './../../../environments/environment'
+import { environment } from './../../../../environments/environment'
 
 if (environment.env !== 'test') {
   localForage.config({

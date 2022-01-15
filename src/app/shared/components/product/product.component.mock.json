@@ -1,0 +1,9 @@
+{
+  "id": 123456,
+  "sku": 213432,
+  "title": "Product",
+  "price": 200.0,
+  "currencyId": "BRL",
+  "currencyFormat": "R$",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_flag.svg/1024px-Black_flag.svg.png"
+}

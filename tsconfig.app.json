@@ -10,7 +10,7 @@
   "files": [
     "src/main.ts",
     "src/polyfills.ts",
-    "src/app/shared/helpers/localforage.helper.ts"
+    "src/app/shared/helpers/localforage/localforage.helper.ts"
   ],
   "include": [
     "src/**/*.d.ts"

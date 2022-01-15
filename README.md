@@ -29,4 +29,4 @@ Automated Deployment with GitHub Actions
 
 [GH PAGES](https://vinimarcili.github.io/bookmark-products/) => Only SPA
 
-[HEROKU](https://vinimarcili.github.io/bookmark-products/) => SPA + SSR
+[HEROKU](https://bookmark-product.herokuapp.com/) => SPA + SSR

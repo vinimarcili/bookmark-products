@@ -4,35 +4,12 @@ on:
     branches:
       - master
 jobs:
-  build_and_deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12
         with:
-          node-version: '14.18.3'
-      - name: Install
-        run: npm install
-      - name: Lint
-        run: npm run lint
-      - name: Build
-        run: npm run build:gh-pages
-      - name: Conventional Changelog Action
-        id: changelog
-        uses: TriPSs/conventional-changelog-action@v3
-        with:
-          github-token: ${{ secrets.GH_TOKEN }}
-          output-file: "false"
-      - name: Create Release
-        uses: actions/create-release@v1
-        if: ${{ steps.changelog.outputs.skipped == 'false' }}
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        with:
-          tag_name: ${{ steps.changelog.outputs.tag }}
-          release_name: ${{ steps.changelog.outputs.tag }}
-          body: ${{ steps.changelog.outputs.clean_changelog }}
-      - name: Deploy to GH Pages
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: npm run deploy:gh-pages:actions
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "bookmark-product" #Must be unique in Heroku
+          heroku_email: "vinipetter@gmail.com"

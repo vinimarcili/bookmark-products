@@ -19,17 +19,29 @@ export class WishlistPageComponent implements OnInit {
       url: '/user/wishlist',
     },
   ]
-  list: Array<Product> = []
+  originalRequest: Array<Product> = []
+  products: Array<Product> = []
 
   constructor() {}
 
   async ngOnInit() {
-    this.list = (await localForage.getItem('products')) || []
+    this.products = (await localForage.getItem('products')) || []
+    this.originalRequest = this.products
+    this.loading = false
+  }
+
+  search(text: string) {
+    this.loading = true
+    if (text?.length) {
+      this.products = this.originalRequest.filter((item) => item.title.toLowerCase().includes(text.toLowerCase()))
+    } else {
+      this.products = this.originalRequest
+    }
     this.loading = false
   }
 
   async toggleItem({ product }: { active: boolean; product: Product }) {
-    this.list = this.list.filter((item) => item.id !== product.id)
-    await localForage.setItem('products', this.list)
+    this.products = this.products.filter((item) => item.id !== product.id)
+    await localForage.setItem('products', this.products)
   }
 }

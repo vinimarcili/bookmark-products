@@ -15,14 +15,34 @@ input {
   &:focus {
     outline: var(--purple);
   }
+  &:disabled {
+    background-color: var(--gray);
+    color: white;
+    cursor: not-allowed;
+  }
+  &:readonly {
+    background-color: var(--silver);
+  }
 }
 .icon {
   color: var(--black);
   font-size: 1rem;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   &.left-icon {
     padding: 0 0 0 1rem;
   }
   &.right-icon {
     padding: 0 1rem 0 0;
+  }
+  &.disabled {
+    background-color: var(--gray);
+    color: white;
+    cursor: not-allowed;
+  }
+  &.readonly {
+    background-color: var(--silver);
   }
 }

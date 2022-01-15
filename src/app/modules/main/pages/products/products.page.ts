@@ -16,6 +16,7 @@ export class ProductsPageComponent implements OnInit {
       url: '/',
     },
   ]
+  originalRequest: Array<Product> = []
   products: Array<Product> = []
   list: Array<Product> = []
 
@@ -23,12 +24,23 @@ export class ProductsPageComponent implements OnInit {
 
   async ngOnInit() {
     this.products = await this.getProducts()
+    this.originalRequest = this.products
     this.list = (await localForage.getItem('products')) || []
     this.loading = false
   }
 
   findOnList(product: Product) {
     return !!this.list.find((item) => item.id === product.id)
+  }
+
+  search(text: string) {
+    this.loading = true
+    if (text?.length) {
+      this.products = this.originalRequest.filter((item) => item.title.toLowerCase().includes(text.toLowerCase()))
+    } else {
+      this.products = this.originalRequest
+    }
+    this.loading = false
   }
 
   async toggleItem({ active, product }: { active: boolean; product: Product }) {

@@ -4,13 +4,13 @@
     <loader *ngIf="loading" size="big"></loader>
     <div class="products-list" *ngIf="!loading">
       <product
-        *ngFor="let product of list"
+        *ngFor="let product of products"
         [product]="product"
         (toggleItem)="toggleItem($event)"
         [active]="true"
         [toRemove]="true"
       ></product>
-      <h2 *ngIf="!list?.length">Nenhum item adicionado a lista de desejos</h2>
+      <h2 *ngIf="!products?.length">Nenhum item adicionado a lista de desejos</h2>
     </div>
   </div>
 </div>

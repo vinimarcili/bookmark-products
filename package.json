@@ -14,7 +14,8 @@
     "lint:fix": "ng lint --fix",
     "lint": "ng lint",
     "build:gh-pages": "ng build --configuration=production --base-href \"https://vinimarcili.github.io/bookmark-products/\"",
-    "deploy:gh-pages": "npx angular-cli-ghpages --dir=dist/bookmark-products/browser"
+    "deploy:gh-pages": "npx angular-cli-ghpages --dir=dist/bookmark-products/browser",
+    "deploy:gh-pages:actions":"npx angular-cli-ghpages --dir=dist/bookmark-products/browser --repo=https://github.com/vinimarcili/bookmark-products.git --name=\"Viní Marcili\" --email=vinipetter@gmail.com"
   },
   "private": true,
   "dependencies": {

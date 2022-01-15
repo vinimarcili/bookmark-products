@@ -17,5 +17,5 @@ jobs:
         run: npm run lint
       - name: Build
         run: npm run build:gh-pages
-      - uses: Deploy to GH Pages
+      - name: Deploy to GH Pages
         run: npm run deploy:gh-pages

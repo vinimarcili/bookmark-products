@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core'
+import { Component, EventEmitter, Input, Output } from '@angular/core'
 import { Product } from '../../interfaces/product.interface'
 
 @Component({
@@ -8,4 +8,13 @@ import { Product } from '../../interfaces/product.interface'
 })
 export class ProductComponent {
   @Input() product?: Product
+  @Input() toRemove = false
+  @Input() active = false
+
+  @Output() toggleItem: EventEmitter<any> = new EventEmitter()
+
+  toggle() {
+    this.active = !this.active
+    this.toggleItem.emit({ active: this.active, product: this.product })
+  }
 }

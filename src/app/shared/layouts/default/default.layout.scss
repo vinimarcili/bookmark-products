@@ -22,6 +22,7 @@ header {
   top: 0;
   justify-content: space-between;
   overflow: hidden;
+  z-index: 1;
   @media (max-width: 767px){
     height: auto;
   }

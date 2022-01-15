@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core'
 import { Routes, RouterModule } from '@angular/router'
 import { DefaultLayoutComponent } from 'src/app/shared/layouts/default/default.layout'
 import { ProductsPageComponent } from './pages/products/products.page'
+import { Soon404PageComponent } from './pages/soon/soon.page'
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
       {
         path: '',
         component: ProductsPageComponent,
+      },
+      {
+        path: 'soon',
+        component: Soon404PageComponent,
       },
     ],
   },

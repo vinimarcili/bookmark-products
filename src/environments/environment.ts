@@ -5,7 +5,7 @@ export const environment = {
   version: `${packageInfo?.version}-development`,
   env: 'development',
   services: {
-    mocky: 'https://run.mocky.io/v3/',
+    mocky: 'https://run.mocky.io/v3',
   },
 }
 

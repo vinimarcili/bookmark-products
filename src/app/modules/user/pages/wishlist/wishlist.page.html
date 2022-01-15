@@ -1,15 +1,16 @@
-<div class="container" id="products-page">
+<div class="container" id="wishlist-page">
   <breadcrumb [itens]="itens"></breadcrumb>
   <div class="content">
     <loader *ngIf="loading" size="big"></loader>
     <div class="products-list" *ngIf="!loading">
       <product
-        *ngFor="let product of products"
+        *ngFor="let product of list"
         [product]="product"
         (toggleItem)="toggleItem($event)"
-        [active]="findOnList(product)"
+        [active]="true"
+        [toRemove]="true"
       ></product>
-      <h2 *ngIf="!products?.length">Nenhum produto encontrado</h2>
+      <h2 *ngIf="!list?.length">Nenhum item adicionado a lista de desejos</h2>
     </div>
   </div>
 </div>

@@ -1,0 +1,21 @@
+<span
+  class="badge"
+  *ngIf="!toRemove"
+  [title]="active ? 'Remover da Lista de desejos' : 'Adicionar a Lista de desejos'"
+  (click)="toggle()"
+  [ngClass]="{ active: active }"
+>
+  <i class="fas fa-heart"></i>
+</span>
+<span class="cross" *ngIf="toRemove" title="Remover da Lista de desejos" (click)="toggle()">
+  <i class="fas fa-times"></i>
+</span>
+<figure>
+  <img [src]="product?.image" [alt]="product?.title" [title]="product?.title" class="img-fluid" />
+</figure>
+<h6>
+  {{ product?.title }}
+</h6>
+<p>
+  {{ product?.price | currency: product?.currencyId || 'BRL' }}
+</p>

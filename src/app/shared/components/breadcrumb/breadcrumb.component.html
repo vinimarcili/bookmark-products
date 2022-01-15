@@ -1,0 +1,12 @@
+<ul>
+  <li *ngFor="let item of itens; let i = index">
+    <a
+      routerLink="{{ item?.url }}"
+      [ngClass]="{
+        active: i === (itens?.length || 1) - 1
+      }"
+    >
+      {{ item?.label }} <i *ngIf="i !== (itens?.length || 1) - 1" class="fas fa-chevron-right"></i>
+    </a>
+  </li>
+</ul>

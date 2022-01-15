@@ -7,10 +7,20 @@ const routes: Routes = [
     loadChildren: () => import('./modules/main/main.module').then((m) => m.MainModule),
     runGuardsAndResolvers: 'always',
   },
-  // {
-  //   path: '**',
-  //   redirectTo: '/error/not-found',
-  // },
+  {
+    path: 'user',
+    loadChildren: () => import('./modules/user/user.module').then((m) => m.UserModule),
+    runGuardsAndResolvers: 'always',
+  },
+  {
+    path: 'error',
+    loadChildren: () => import('./modules/error/error.module').then((m) => m.ErrorModule),
+    runGuardsAndResolvers: 'always',
+  },
+  {
+    path: '**',
+    redirectTo: '/error/not-found',
+  },
 ]
 
 @NgModule({

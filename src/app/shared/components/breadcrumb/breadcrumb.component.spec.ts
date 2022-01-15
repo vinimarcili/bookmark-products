@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router'
 import { render, screen } from '@testing-library/angular'
 import { BreadcrumbComponent } from './breadcrumb.component'
 
@@ -6,6 +7,7 @@ const getList = () => screen.getByTestId('breadcrumb') as HTMLElement
 describe('BreadcrumbComponent', () => {
   it('loader should be render a bredcrumb', async () => {
     await render(BreadcrumbComponent, {
+      imports: [RouterModule.forRoot([])],
       componentProperties: {
         itens: [
           { label: 'item1', url: '/' },

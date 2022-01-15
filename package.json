@@ -7,6 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "test:headless": "ng test --sourceMap=false --browsers=ChromeHeadlessCI --watch=false",
     "dev:ssr": "ng run bookmark-products:serve-ssr",
     "serve:ssr": "node dist/bookmark-products/server/main.js",
     "build:ssr": "ng build && ng run bookmark-products:server",
@@ -71,10 +72,12 @@
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.1.0",
+    "karma-firefox-launcher": "^2.1.2",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "prettier": "^2.5.1",
     "prettier-eslint": "^8.2.2",
+    "puppeteer": "^13.0.1",
     "typescript": "~4.5.2"
   }
 }

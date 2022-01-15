@@ -1,0 +1,11 @@
+<span class="icon left-icon" *ngIf="leftIcon" [innerHTML]="leftIcon"></span>
+<input
+  [name]="nameAttr || timeStamp"
+  [id]="nameAttr || timeStamp"
+  [placeholder]="placeholder"
+  [value]="value"
+  [type]="type || 'text'"
+  [ngModel]="value"
+  (ngModelChange)="value = $event; valueChange.emit(value)"
+/>
+<span class="icon right-icon" *ngIf="rightIcon" [innerHTML]="rightIcon"></span>

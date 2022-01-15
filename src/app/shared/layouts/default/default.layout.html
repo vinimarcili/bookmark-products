@@ -1,0 +1,39 @@
+<header>
+  <div class="container">
+    <div class="brand">
+      <a routerLink="/"><h2>MagaNets</h2></a>
+    </div>
+    <nav>
+      <ul>
+        <li>
+          <a routerLink="/soon"><i class="fas fa-map-marker-alt"></i><span>Cidade: São Paulo</span></a>
+        </li>
+        <li>
+          <a routerLink="/soon"><i class="fas fa-phone-alt"></i><span>Central de atendimento</span></a>
+        </li>
+        <li>
+          <a routerLink="/wishlist"><i class="fas fa-heart"></i><span>Lista de desejos</span></a>
+        </li>
+      </ul>
+      <div class="wrapper-search">
+        <input-component
+          leftIcon="<i class='fas fa-search'></i>"
+          nameAttr="search-input"
+          idAttr="search-input"
+          [(value)]="searchText"
+          placeholder="Buscar"
+        ></input-component>
+      </div>
+    </nav>
+  </div>
+</header>
+<main>
+  <router-outlet></router-outlet>
+</main>
+<footer>
+  <div class="container">
+    <p>
+      Develop by <a href="https://github.com/vinimarcili" target="_blank">Vinícius Marcili <i class="fab fa-github"></i></a>
+    </p>
+  </div>
+</footer>

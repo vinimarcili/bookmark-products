@@ -6,5 +6,6 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./default.layout.scss'],
 })
 export class DefaultLayoutComponent implements OnInit {
+  searchText = ''
   ngOnInit(): void {}
 }

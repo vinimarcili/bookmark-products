@@ -3,12 +3,13 @@
 ## Development Server
 
 1. Run `npm install`
-2. Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+2. Run `npm install husky -g`
+3. Run `husky install`
+4. Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Development Server with SSR
 
-1. Run `npm install`
-2. Run `npm run dev:ssr` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+1. Run `npm run dev:ssr` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 ## Build
 
 Run `ng build` or `npm run build:ssr` to build the project. The build artifacts will be stored in the `dist/` directory.
